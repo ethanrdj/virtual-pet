@@ -20,6 +20,16 @@ Pet.prototype.walk = function() {
     }
   }
 
-  const pet = new Pet("Darth Coder");
+  const MINIMUM_HUNGER = 0;
+
+Pet.prototype.feed = function() {
+  if ((this.hunger - 3) >= MINIMUM_HUNGER) {
+    this.hunger -= 3
+  } else {
+    this.hunger = MINIMUM_HUNGER;
+  }
+}  
+  
+const pet = new Pet("Darth Coder");
 
 module.exports = Pet;
