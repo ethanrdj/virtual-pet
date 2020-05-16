@@ -72,7 +72,7 @@ const Pet = require('../src/pet');
       pet.feed();
 
       expect(pet.hunger).toEqual(3);
-    })
+    });
 
     it('decreases the hunger with a minimum of 0', () => {
       const pet = new Pet('fido');
@@ -81,5 +81,44 @@ const Pet = require('../src/pet');
       pet.feed();
 
       expect(pet.hunger).toEqual(0);
-    })
+    });
   })
+  describe('checkUp', () => {
+    it('when the fitness is 3 or less, it returns a string', () => {
+      const pet = new Pet('fido');
+
+      pet.fitness = 2;
+      pet.checkUp();
+
+      expect(pet.checkUp()).toEqual('I need a walk')
+    });
+
+    it('returns a string when hunger is equal to or greater than 5', () => {
+      const pet = new Pet('fido');
+
+      pet.hunger = 9;
+      pet.checkUp();
+
+      expect(pet.checkUp()).toEqual("I am hungry");
+  });
+
+    it('when fitness is 3 or less and hunger is 5 or more, it returns a string', () => {
+      const pet = new Pet('fido');
+
+      pet.fitness = 3;
+      pet.hunger = 5;
+      pet.checkUp();
+
+      expect(pet.checkUp()).toBe('I am hungry AND I need a walk')
+    });
+
+    it('when fitness is 4 or more and hunger is 4 or less, it returns a string', () => {
+      const pet = new Pet('fido');
+
+      pet.fitness = 4;
+      pet.hunger = 4;
+      pet.checkUp();
+
+      expect(pet.checkUp()).toBe('I feel great!')
+    });
+  });

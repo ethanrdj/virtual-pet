@@ -4,6 +4,7 @@ function Pet(name) {
     this.hunger = 0;
     this.fitness = 10;
 }
+
 Pet.prototype.growUp = function() {
   this.age += 1;
   this.hunger += 5;
@@ -28,8 +29,22 @@ Pet.prototype.feed = function() {
   } else {
     this.hunger = MINIMUM_HUNGER;
   }
-}  
-  
+}
+
+Pet.prototype.checkUp = function() {
+  if (this.fitness <= 3 && this.hunger >= 5) {
+    return 'I am hungry AND I need a walk'
+  }
+  else if (this.fitness <= 3) {
+    return "I need a walk"
+  }
+  else if (this.hunger >= 5) {
+    return 'I am hungry'
+  }
+  else {
+    return 'I feel great!'
+  }
+} 
 const pet = new Pet("Darth Coder");
 
 module.exports = Pet;
