@@ -165,7 +165,7 @@ const Pet = require('../src/pet');
 
       pet.age = 31;
       pet.hunger = 11;
-      pet.fitness = -10;
+      pet.fitness = 0;
 
       expect(pet.isAlive).toBe(false)
     });
