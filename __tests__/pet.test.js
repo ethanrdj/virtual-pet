@@ -122,3 +122,24 @@ const Pet = require('../src/pet');
       expect(pet.checkUp()).toBe('I feel great!')
     });
   });
+
+  describe('isAlive', () => {
+    it('assigns isAlive property to true if fitness is 1 or more, hunger is less than 10 and age is less than 30',() => {
+      const pet = new Pet('fido');
+
+      pet.age = 0;
+      pet.hunger = 0;
+      pet.fitness = 10;
+
+      expect(pet.isAlive).toBe(true)
+    });
+    it('assigns isAlive property to false if fitness is 0 or less, hunger is 10 or more and age is greater or equal to 30',() => {
+      const pet = new Pet('fido');
+
+      pet.age = 31;
+      pet.hunger = 11;
+      pet.fitness = -10;
+
+      expect(pet.isAlive).toBe(false)
+    });
+  });

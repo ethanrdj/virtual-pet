@@ -1,9 +1,22 @@
+// Constants
+const initialAge = 0;
+const initialHunger = 0;
+const initialFitness = 10;
+const MAXIMUM_FITNESS = 10;
+const MINIMUM_HUNGER = 0;
+
 function Pet(name) {
     this.name = name;
-    this.age = 0;
-    this.hunger = 0;
-    this.fitness = 10;
+    this.age = initialAge;
+    this.hunger = initialHunger;
+    this.fitness = initialFitness;
 }
+
+Pet.prototype = {
+  get isAlive() {
+    return this.age < 30 && this.fitness > 0 && this.hunger < 10;
+  }
+};
 
 Pet.prototype.growUp = function() {
   this.age += 1;
@@ -11,17 +24,13 @@ Pet.prototype.growUp = function() {
   this.fitness -= 3;
   };
 
-const MAXIMUM_FITNESS = 10;
-
-Pet.prototype.walk = function() {
+  Pet.prototype.walk = function() {
   if ((this.fitness + 4) <= MAXIMUM_FITNESS ) {
     this.fitness += 4;
   } else {
     this.fitness = MAXIMUM_FITNESS;
     }
   }
-
-  const MINIMUM_HUNGER = 0;
 
 Pet.prototype.feed = function() {
   if ((this.hunger - 3) >= MINIMUM_HUNGER) {
