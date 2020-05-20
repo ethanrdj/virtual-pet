@@ -39,11 +39,12 @@ const Pet = require('../src/pet');
 
     it('decreases the fitness by 3', () => {
       const pet = new Pet('Fido');
-    
+
       pet.growUp();
-    
+      
       expect(pet.fitness).toEqual(7);
-    });
+      });
+      
 
     it('throws an error if the pet is not alive', () => {
       const pet = new Pet('Fido');
@@ -170,3 +171,15 @@ const Pet = require('../src/pet');
       expect(pet.isAlive).toBe(false)
     });
   });
+
+/*describe('haveChild', () => {
+    it('creates a new child dependency', () => {
+      const parentPet = new Pet("Darth Coder");
+      const childPet = new Pet("PrinCSS Leia");
+
+      parentPet.haveChild(childPet);
+
+      expect(childPet).toBeInstanceOf(Object);
+    });
+}); */
+

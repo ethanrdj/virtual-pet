@@ -10,68 +10,72 @@ const MINIMUM_HUNGER = 0;
 const PROMPT_HUNGRY = 5;
 const PROMPT_UNFIT = 3;
 
-function Pet(name) {
-    this.name = name;
-    this.age = initialAge;
-    this.hunger = initialHunger;
-    this.fitness = initialFitness;
+class Pet {
+constructor(name) {
+this.name = name;
+this.age = initialAge;
+this.hunger = initialHunger;
+this.fitness = initialFitness;
+this.children = [];
 }
 
-Pet.prototype = {
-  get isAlive() {
-    return this.age < MAXIMUM_AGE && this.fitness > MINIMUM_FITNESS && this.hunger < MAXIMUM_HUNGER;
-  }
+get isAlive() {
+return this.age < MAXIMUM_AGE && this.fitness > MINIMUM_FITNESS && this.hunger < MAXIMUM_HUNGER;
+}
 };
 
 Pet.prototype.growUp = function() {
-  if (!this.isAlive) {
-    throw new Error('Your pet is no longer alive :(');
-  }
-  this.age += 1;
-  this.hunger += 5;
-  if ((this.fitness - 3) >= MINIMUM_FITNESS){
-    this.fitness -= 3;
-  } else {
-    this.fitness = MINIMUM_FITNESS;
-  }
-  };
-
-  Pet.prototype.walk = function() {
-  if (!this.isAlive) {
-    throw new Error('Your pet is no longer alive :(');
-  }
-  if ((this.fitness + 4) <= MAXIMUM_FITNESS ) {
-    this.fitness += 4;
-  } else {
-    this.fitness = MAXIMUM_FITNESS;
-    }
-  }
-
-Pet.prototype.feed = function() {
-  if (!this.isAlive) {
-    throw new Error('Your pet is no longer alive :(');
-  }
-  if ((this.hunger - 3) >= MINIMUM_HUNGER) {
-    this.hunger -= 3
-  } else {
-    this.hunger = MINIMUM_HUNGER;
-  }
+if (!this.isAlive) {
+throw new Error('Your pet is no longer alive :(');
 }
-
+this.age += 1;
+this.hunger += 5;
+if ((this.fitness - 3) >= MINIMUM_FITNESS) {
+this.fitness -= 3;
+}
+else {
+this.fitness = MINIMUM_FITNESS;
+}
+}
+Pet.prototype.walk = function() {
+if (!this.isAlive) {
+throw new Error('Your pet is no longer alive :(');
+}
+if ((this.fitness + 4) <= MAXIMUM_FITNESS) {
+this.fitness += 4;
+}
+else {
+this.fitness = MAXIMUM_FITNESS;
+}
+}
+Pet.prototype.feed = function() {
+if (!this.isAlive) {
+throw new Error('Your pet is no longer alive :(');
+}
+if ((this.hunger - 3) >= MINIMUM_HUNGER) {
+this.hunger -= 3;
+}
+else {
+this.hunger = MINIMUM_HUNGER;
+}
+}
 Pet.prototype.checkUp = function() {
-  if (this.fitness <= PROMPT_UNFIT && this.hunger >= PROMPT_HUNGRY) {
-    return 'I am hungry AND I need a walk'
-  }
-  else if (this.fitness <= PROMPT_UNFIT) {
-    return "I need a walk"
-  }
-  else if (this.hunger >= PROMPT_HUNGRY) {
-    return 'I am hungry'
-  }
-  else {
-    return 'I feel great!'
-  }
-} 
-const pet = new Pet("Darth Coder");
+if (this.fitness <= PROMPT_UNFIT && this.hunger >= PROMPT_HUNGRY) {
+return 'I am hungry AND I need a walk';
+}
+else if (this.fitness <= PROMPT_UNFIT) {
+return "I need a walk";
+}
+else if (this.hunger >= PROMPT_HUNGRY) {
+return 'I am hungry';
+}
+else {
+return 'I feel great!';
+}
+}
+/*haveChild = function(child) {
+this.children = child;
+} */
 
+const pet = new Pet('Darth Coder');
 module.exports = Pet;
