@@ -172,14 +172,26 @@ const Pet = require('../src/pet');
     });
   });
 
-/*describe('haveChild', () => {
-    it('creates a new child dependency', () => {
+describe('adoptChild', () => {
+    it('adds a an new Pet object to the parentPets children array property', () => {
       const parentPet = new Pet("Darth Coder");
       const childPet = new Pet("PrinCSS Leia");
 
-      parentPet.haveChild(childPet);
+      parentPet.adoptChild(childPet);
 
-      expect(childPet).toBeInstanceOf(Object);
+      expect(parentPet.children).toBeInstanceOf(Array);
+      expect(parentPet.children[0]).toBe(childPet);
     });
-}); */
+});
 
+describe('haveBaby', () => {
+  it('adds a Pet object to the parents children array property when passed a name string', () => {
+  const parentPet = new Pet('Darth Coder');
+
+  parentPet.haveBaby('PrinCSS Leia');
+
+  expect(parentPet.children).toBeInstanceOf(Array);
+  expect(parentPet.children[0]).toBeInstanceOf(Object);
+  expect(parentPet.children[0].name).toBe('PrinCSS Leia');
+  });
+});
